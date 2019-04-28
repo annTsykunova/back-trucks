@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    #    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        default_schema: solko
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  datasource:
+    #    platform: postgres
+    url: jdbc:postgresql://localhost:5432/lapko
+    username: postgres
+    password: root
+#    driverClassName: org.postgresql.Driver
