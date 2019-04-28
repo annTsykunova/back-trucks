@@ -5,6 +5,6 @@ package by.baranavichy.backtrucks.importing.model.column;
  */
 public enum CountryColumn {
 
-    NAME, CODE
+    ACTION, NAME, CODE
 
 }

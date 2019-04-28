@@ -15,7 +15,7 @@ import java.util.function.Supplier;
  */
 
 @Component
-public class ManufacturerImportConverterTO
+public class ManufacturerImportConverterImpl
         extends ImportConverterImpl<ManufacturerTO, ManufacturerImportTO>
         implements ManufacturerImportConverter {
 
@@ -25,7 +25,7 @@ public class ManufacturerImportConverterTO
     }
 
     @Override
-    public Collection<GetterSetterPair<ManufacturerTO, ManufacturerImportTO, ?>> getImportTOGettersAndTOSetters() {
+    public Collection<GetterSetterPair<ManufacturerTO, ManufacturerImportTO, ?>> getGettersAndSetters() {
         return List.of(
                 GetterSetterPair.of(ManufacturerImportTO::getName, ManufacturerTO::setName)
         );

@@ -18,7 +18,7 @@ public abstract class ImportConverterImpl<T, I>
     @Override
     public T toTo(I importTo) {
         T to = getTOSupplier().get();
-        getImportTOGettersAndTOSetters().forEach(getterSetterPair -> {
+        getGettersAndSetters().forEach(getterSetterPair -> {
             convertProperty(to, importTo, getterSetterPair);
         });
         return to;

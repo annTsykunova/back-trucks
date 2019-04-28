@@ -25,7 +25,7 @@ public class CountryImportConverterImpl
     }
 
     @Override
-    public Collection<GetterSetterPair<CountryTO, CountryImportTO, ?>> getImportTOGettersAndTOSetters() {
+    public Collection<GetterSetterPair<CountryTO, CountryImportTO, ?>> getGettersAndSetters() {
         return List.of(
                 GetterSetterPair.of(CountryImportTO::getName, CountryTO::setName),
                 GetterSetterPair.of(CountryImportTO::getCode, CountryTO::setCode)

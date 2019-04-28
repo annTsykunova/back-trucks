@@ -1,6 +1,7 @@
 package by.baranavichy.backtrucks.importing.parser;
 
 import by.baranavichy.backtrucks.common.model.GetterSetterPair;
+import by.baranavichy.backtrucks.importing.model.Action;
 import by.baranavichy.backtrucks.importing.model.CountryImportTO;
 import by.baranavichy.backtrucks.importing.model.column.CountryColumn;
 import org.apache.commons.csv.CSVRecord;
@@ -28,8 +29,12 @@ public class CountryImportParser
     }
 
     @Override
-    public Collection<GetterSetterPair<CountryImportTO, CSVRecord, ?>> getImportTOGettersAndTOSetters() {
+    public Collection<GetterSetterPair<CountryImportTO, CSVRecord, ?>> getGettersAndSetters() {
         return List.of(
+                GetterSetterPair.of(record -> {
+                    String actionString = record.get(CountryColumn.ACTION);
+                    return Action.findByValueIgnoreCase(actionString).orElse(null);
+                }, CountryImportTO::setAction),
                 GetterSetterPair.of(record -> record.get(CountryColumn.NAME), CountryImportTO::setName),
                 GetterSetterPair.of(record -> record.get(CountryColumn.CODE), CountryImportTO::setCode)
         );

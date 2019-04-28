@@ -47,7 +47,7 @@ public abstract class ImportParser<I> implements GetterSetterInterface<I, CSVRec
 
     private I toTo(CSVRecord record) {
         I importTO = getNewImportTO().get();
-        getImportTOGettersAndTOSetters().forEach(getterSetterPair -> {
+        getGettersAndSetters().forEach(getterSetterPair -> {
             convertProperty(importTO, record, getterSetterPair);
         });
         return importTO;

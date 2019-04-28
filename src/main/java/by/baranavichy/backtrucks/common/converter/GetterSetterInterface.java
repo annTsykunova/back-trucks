@@ -14,7 +14,7 @@ import java.util.function.Function;
  */
 public interface GetterSetterInterface<T1, T2> {
 
-    Collection<GetterSetterPair<T1, T2, ?>> getImportTOGettersAndTOSetters();
+    Collection<GetterSetterPair<T1, T2, ?>> getGettersAndSetters();
 
     default <P> void convertProperty(T1 to, T2 importTo, GetterSetterPair<T1, T2, P> getterSetterPair) {
         Function<T2, P> getter = getterSetterPair.getGetter();

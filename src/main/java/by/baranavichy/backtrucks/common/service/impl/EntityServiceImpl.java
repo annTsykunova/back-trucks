@@ -30,5 +30,12 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
         return converter.convertToTO(savedEntity);
     }
 
+    @Override
+    public void delete(T to) {
+        E entityToDelete = converter.convertToEntity(to);
+        Optional<E> maybeExistingEntity = getExistingEntity(entityToDelete);
+        maybeExistingEntity.ifPresent(jpaRepository::delete);
+    }
+
     protected abstract Optional<E> getExistingEntity(E entityToSave);
 }

@@ -7,4 +7,6 @@ public interface EntityService<T> {
 
     T save(T to);
 
+    void delete(T to);
+
 }
