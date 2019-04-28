@@ -7,6 +7,8 @@ import by.baranavichy.backtrucks.persistence.model.Country;
 import by.baranavichy.backtrucks.persistence.repository.CountryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Created by Vanya on 28.04.2019.
  */
@@ -16,7 +18,15 @@ public class CountryServiceImpl
         extends EntityServiceImpl<Country, CountryTO, Long>
         implements CountryService {
 
+    private final CountryRepository countryRepository;
+
     public CountryServiceImpl(CountryConverter countryConverter, CountryRepository countryRepository) {
         super(countryConverter, countryRepository);
+        this.countryRepository = countryRepository;
+    }
+
+    @Override
+    protected Optional<Country> getExistingEntity(Country entityToSave) {
+        return countryRepository.findByName(entityToSave.getName());
     }
 }

@@ -3,6 +3,7 @@ package by.baranavichy.backtrucks.persistence.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -14,6 +15,7 @@ import javax.persistence.Entity;
 @EqualsAndHashCode(callSuper = true)
 public class Country extends AbstractEntity {
 
+    @Column(unique = true, nullable = false)
     private String name;
     private String code;
 
