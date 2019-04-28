@@ -6,14 +6,17 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Entity;
 
 /**
- * Created by Vanya on 27.04.2019.
+ * Created by Vanya on 28.04.2019.
  */
 
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Manufacturer extends AbstractEntity {
+public class Country extends AbstractEntity {
 
     private String name;
+    private String code;
 
 }
+
+

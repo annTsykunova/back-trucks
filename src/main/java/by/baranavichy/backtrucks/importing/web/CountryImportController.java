@@ -1,6 +1,6 @@
 package by.baranavichy.backtrucks.importing.web;
 
-import by.baranavichy.backtrucks.importing.service.ManufacturerImportService;
+import by.baranavichy.backtrucks.importing.service.CountryImportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,21 +10,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * Created by Vanya on 27.04.2019.
+ * Created by Vanya on 28.04.2019.
  */
 
 @Controller
-@RequestMapping("/import/manufacturers")
+@RequestMapping("/import/countries")
 @RequiredArgsConstructor
-public class ManufacturerImportController {
+public class CountryImportController {
 
-    private final ManufacturerImportService manufacturerImportService;
+    private final CountryImportService countryImportService;
 
     @PostMapping
     public ResponseEntity importBrands(@RequestParam("file") MultipartFile file) {
-        manufacturerImportService.importData(file);
+        countryImportService.importData(file);
         return ResponseEntity.ok().build();
     }
-
 
 }

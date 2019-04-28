@@ -6,6 +6,8 @@ import by.baranavichy.backtrucks.persistence.model.AbstractEntity;
 import by.baranavichy.backtrucks.persistence.repository.EntityRepository;
 import lombok.RequiredArgsConstructor;
 
+import javax.transaction.Transactional;
+
 /**
  * Created by Vanya on 27.04.2019.
  */
@@ -16,6 +18,7 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
     private final EntityRepository<E, ID> repository;
 
     @Override
+    @Transactional
     public T save(T to) {
         E entityToSave = converter.convertToEntity(to);
         E savedEntity = repository.save(entityToSave);
