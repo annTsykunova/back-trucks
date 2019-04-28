@@ -23,18 +23,21 @@ public class ManufacturerParser extends ImportParser<ManufacturerImportTO> {
     }
 
     @Override
-    protected Supplier<ManufacturerImportTO> getNewImportTO() {
-        return ManufacturerImportTO::new;
-    }
-
-    @Override
-    public Collection<GetterSetterPair<ManufacturerImportTO, CSVRecord, ?>> getGettersAndSetters() {
+    protected Collection<GetterSetterPair<ManufacturerImportTO, CSVRecord, ?>> getGettersAndSetters() {
         return List.of(
                 GetterSetterPair.of(record -> {
                     String actionString = record.get(ManufacturerColumn.ACTION);
                     return Action.findByValueIgnoreCase(actionString).orElse(null);
                 }, ManufacturerImportTO::setAction),
-                GetterSetterPair.of(record -> record.get(ManufacturerColumn.NAME), ManufacturerImportTO::setName)
+                GetterSetterPair.of(record -> record.get(ManufacturerColumn.NAME), ManufacturerImportTO::setName),
+                GetterSetterPair.of(record -> record.get(ManufacturerColumn.COUNTRY), ManufacturerImportTO::setCountryCode)
         );
     }
+
+    @Override
+    protected Supplier<ManufacturerImportTO> getNewImportTO() {
+        return ManufacturerImportTO::new;
+    }
+
+
 }

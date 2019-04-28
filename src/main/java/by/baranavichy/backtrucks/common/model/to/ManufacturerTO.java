@@ -10,5 +10,6 @@ import lombok.Data;
 public class ManufacturerTO {
 
     private String name;
+    private CountryTO countryTO;
 
 }

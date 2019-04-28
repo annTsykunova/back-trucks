@@ -16,20 +16,14 @@ import java.util.function.Supplier;
  */
 
 @Component
-public class CountryImportParser
-        extends ImportParser<CountryImportTO> {
+public class CountryImportParser extends ImportParser<CountryImportTO> {
 
     public CountryImportParser() {
         super(CountryColumn.class);
     }
 
     @Override
-    protected Supplier<CountryImportTO> getNewImportTO() {
-        return CountryImportTO::new;
-    }
-
-    @Override
-    public Collection<GetterSetterPair<CountryImportTO, CSVRecord, ?>> getGettersAndSetters() {
+    protected Collection<GetterSetterPair<CountryImportTO, CSVRecord, ?>> getGettersAndSetters() {
         return List.of(
                 GetterSetterPair.of(record -> {
                     String actionString = record.get(CountryColumn.ACTION);
@@ -39,4 +33,10 @@ public class CountryImportParser
                 GetterSetterPair.of(record -> record.get(CountryColumn.CODE), CountryImportTO::setCode)
         );
     }
+
+    @Override
+    protected Supplier<CountryImportTO> getNewImportTO() {
+        return CountryImportTO::new;
+    }
+
 }

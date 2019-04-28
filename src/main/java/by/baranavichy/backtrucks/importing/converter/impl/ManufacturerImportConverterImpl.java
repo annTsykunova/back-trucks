@@ -1,35 +1,29 @@
 package by.baranavichy.backtrucks.importing.converter.impl;
 
-import by.baranavichy.backtrucks.common.model.GetterSetterPair;
+import by.baranavichy.backtrucks.common.model.to.CountryTO;
 import by.baranavichy.backtrucks.common.model.to.ManufacturerTO;
 import by.baranavichy.backtrucks.importing.converter.ManufacturerImportConverter;
 import by.baranavichy.backtrucks.importing.model.ManufacturerImportTO;
 import org.springframework.stereotype.Component;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Supplier;
 
 /**
  * Created by Vanya on 27.04.2019.
  */
 
 @Component
-public class ManufacturerImportConverterImpl
-        extends ImportConverterImpl<ManufacturerTO, ManufacturerImportTO>
-        implements ManufacturerImportConverter {
+public class ManufacturerImportConverterImpl implements ManufacturerImportConverter {
 
     @Override
-    protected Supplier<ManufacturerTO> getTOSupplier() {
-        return ManufacturerTO::new;
-    }
+    public ManufacturerTO toTo(ManufacturerImportTO importTo) {
+        ManufacturerTO manufacturerTO = new ManufacturerTO();
 
-    @Override
-    public Collection<GetterSetterPair<ManufacturerTO, ManufacturerImportTO, ?>> getGettersAndSetters() {
-        return List.of(
-                GetterSetterPair.of(ManufacturerImportTO::getName, ManufacturerTO::setName)
-        );
-    }
+        CountryTO countryTO = new CountryTO();
+        countryTO.setCode(importTo.getCountryCode());
 
+        manufacturerTO.setName(importTo.getName());
+        manufacturerTO.setCountryTO(countryTO);
+
+        return manufacturerTO;
+    }
 
 }

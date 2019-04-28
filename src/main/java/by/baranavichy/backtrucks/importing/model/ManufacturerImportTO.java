@@ -12,5 +12,6 @@ import lombok.EqualsAndHashCode;
 public class ManufacturerImportTO extends ImportTO {
 
     private String name;
+    private String countryCode;
 
 }
