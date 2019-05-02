@@ -43,4 +43,6 @@ public abstract class ImportServiceImpl<T, I extends ImportTO> implements Import
 
     protected abstract ImportConverter<T, I> getImportConverter();
 
+    protected abstract T getEnrichedTO(T toToEnrich);
+
 }

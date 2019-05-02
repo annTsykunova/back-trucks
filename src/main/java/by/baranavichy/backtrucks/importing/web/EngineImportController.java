@@ -1,7 +1,6 @@
 package by.baranavichy.backtrucks.importing.web;
 
-import by.baranavichy.backtrucks.importing.service.ManufacturerImportService;
-import lombok.RequiredArgsConstructor;
+import by.baranavichy.backtrucks.importing.service.EngineImportService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,21 +9,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * Created by Vanya on 27.04.2019.
+ * Created by Vanya on 29.04.2019.
  */
 
 @Controller
-@RequestMapping("/import/manufacturers")
-@RequiredArgsConstructor
-public class ManufacturerImportController {
+@RequestMapping("/import/enigines")
+public class EngineImportController {
 
-    private final ManufacturerImportService manufacturerImportService;
+    private final EngineImportService engineImportService;
+
+
+    public EngineImportController(EngineImportService engineImportService) {
+        this.engineImportService = engineImportService;
+    }
 
     @PostMapping
     public ResponseEntity importData(@RequestParam("file") MultipartFile file) {
-        manufacturerImportService.importData(file);
+        engineImportService.importData(file);
         return ResponseEntity.ok().build();
     }
-
 
 }

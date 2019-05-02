@@ -40,4 +40,9 @@ public class CountryImportServiceImpl
     protected ImportConverter<CountryTO, CountryImportTO> getImportConverter() {
         return this.countryImportConverter;
     }
+
+    @Override
+    protected CountryTO getEnrichedTO(CountryTO toToEnrich) {
+        return toToEnrich;
+    }
 }
