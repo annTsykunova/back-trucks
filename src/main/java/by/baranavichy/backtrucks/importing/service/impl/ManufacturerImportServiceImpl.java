@@ -1,5 +1,6 @@
 package by.baranavichy.backtrucks.importing.service.impl;
 
+import by.baranavichy.backtrucks.common.converter.impl.CountryConverter;
 import by.baranavichy.backtrucks.common.model.to.ManufacturerTO;
 import by.baranavichy.backtrucks.common.service.EntityService;
 import by.baranavichy.backtrucks.common.service.ManufacturerService;
@@ -11,6 +12,7 @@ import by.baranavichy.backtrucks.importing.parser.ManufacturerParser;
 import by.baranavichy.backtrucks.importing.service.ManufacturerImportService;
 import by.baranavichy.backtrucks.persistence.model.Country;
 import by.baranavichy.backtrucks.persistence.repository.CountryRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,6 +22,7 @@ import java.util.Optional;
  */
 
 @Service
+@RequiredArgsConstructor
 public class ManufacturerImportServiceImpl
         extends ImportServiceImpl<ManufacturerTO, ManufacturerImportTO>
         implements ManufacturerImportService {
@@ -28,15 +31,7 @@ public class ManufacturerImportServiceImpl
     private final ManufacturerService manufacturerService;
     private final CountryRepository countryRepository;
     private final ManufacturerImportConverter manufacturerImportConverter;
-
-    public ManufacturerImportServiceImpl(ManufacturerParser manufacturerParser, ManufacturerService manufacturerService,
-                                         CountryRepository countryRepository,
-                                         ManufacturerImportConverter manufacturerImportConverter) {
-        this.manufacturerParser = manufacturerParser;
-        this.manufacturerService = manufacturerService;
-        this.countryRepository = countryRepository;
-        this.manufacturerImportConverter = manufacturerImportConverter;
-    }
+    private final CountryConverter countryConverter;
 
     @Override
     protected ImportParser<ManufacturerImportTO> getParser() {
@@ -58,8 +53,9 @@ public class ManufacturerImportServiceImpl
         String countryCode = toToEnrich.getCountryTO().getCode();
         if (countryCode != null) {
             Optional<Country> maybeCountry = countryRepository.findByCodeIgnoreCase(countryCode);
+            maybeCountry.ifPresent(country -> toToEnrich.setCountryTO(countryConverter.convertToTO(country)));
         }
-        return null;
+        return toToEnrich;
     }
 
 

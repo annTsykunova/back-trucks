@@ -27,6 +27,6 @@ public class CountryServiceImpl
 
     @Override
     protected Optional<Country> getExistingEntity(Country entityToSave) {
-        return countryRepository.findByName(entityToSave.getName());
+        return countryRepository.findByCodeIgnoreCase(entityToSave.getCode());
     }
 }

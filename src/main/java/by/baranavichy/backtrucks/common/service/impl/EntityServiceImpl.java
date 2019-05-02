@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
+import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -17,6 +18,12 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
 
     private final EntityTOConverter<E, T> converter;
     private final JpaRepository<E, ID> jpaRepository;
+
+    @Override
+    public Collection<T> getAll() {
+        Collection<E> entities = jpaRepository.findAll();
+        return converter.convertToTos(entities);
+    }
 
     @Override
     @Transactional

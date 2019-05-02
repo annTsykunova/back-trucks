@@ -17,8 +17,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class Country extends AbstractEntity {
 
-    @Column(unique = true, nullable = false)
     private String name;
+    @Column(unique = true, nullable = false)
     private String code;
 
     @OneToMany(mappedBy = "country")

@@ -10,6 +10,7 @@ import by.baranavichy.backtrucks.importing.parser.CountryImportParser;
 import by.baranavichy.backtrucks.importing.parser.ImportParser;
 import by.baranavichy.backtrucks.importing.service.CountryImportService;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -43,6 +44,7 @@ public class CountryImportServiceImpl
 
     @Override
     protected CountryTO getEnrichedTO(CountryTO toToEnrich) {
+        toToEnrich.setName(StringUtils.capitalize(toToEnrich.getName().toLowerCase()));
         return toToEnrich;
     }
 }
