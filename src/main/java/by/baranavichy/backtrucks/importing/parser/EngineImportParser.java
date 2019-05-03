@@ -16,10 +16,10 @@ import java.util.function.Supplier;
  */
 
 @Component
-public class EngineImportParser extends ImportParser<EngineImportTO> {
+public class EngineImportParser extends ImportParser<EngineImportTO, EngineColumn> {
 
     public EngineImportParser() {
-        super(EngineColumn.class);
+        super(EngineColumn.values());
     }
 
     @Override
@@ -39,4 +39,5 @@ public class EngineImportParser extends ImportParser<EngineImportTO> {
     protected Supplier<EngineImportTO> getNewImportTO() {
         return EngineImportTO::new;
     }
+
 }

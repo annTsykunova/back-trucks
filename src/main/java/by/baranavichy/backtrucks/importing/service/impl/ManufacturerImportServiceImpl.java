@@ -7,6 +7,7 @@ import by.baranavichy.backtrucks.common.service.ManufacturerService;
 import by.baranavichy.backtrucks.importing.converter.ImportConverter;
 import by.baranavichy.backtrucks.importing.converter.ManufacturerImportConverter;
 import by.baranavichy.backtrucks.importing.model.ManufacturerImportTO;
+import by.baranavichy.backtrucks.importing.model.column.ManufacturerColumn;
 import by.baranavichy.backtrucks.importing.parser.ImportParser;
 import by.baranavichy.backtrucks.importing.parser.ManufacturerParser;
 import by.baranavichy.backtrucks.importing.service.ManufacturerImportService;
@@ -34,7 +35,7 @@ public class ManufacturerImportServiceImpl
     private final CountryConverter countryConverter;
 
     @Override
-    protected ImportParser<ManufacturerImportTO> getParser() {
+    protected ImportParser<ManufacturerImportTO, ManufacturerColumn> getParser() {
         return this.manufacturerParser;
     }
 
@@ -50,10 +51,10 @@ public class ManufacturerImportServiceImpl
 
     @Override
     protected ManufacturerTO getEnrichedTO(ManufacturerTO toToEnrich) {
-        String countryCode = toToEnrich.getCountryTO().getCode();
+        String countryCode = toToEnrich.getCountry().getCode();
         if (countryCode != null) {
             Optional<Country> maybeCountry = countryRepository.findByCodeIgnoreCase(countryCode);
-            maybeCountry.ifPresent(country -> toToEnrich.setCountryTO(countryConverter.convertToTO(country)));
+            maybeCountry.ifPresent(country -> toToEnrich.setCountry(countryConverter.convertToTO(country)));
         }
         return toToEnrich;
     }

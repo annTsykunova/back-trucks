@@ -6,6 +6,7 @@ import by.baranavichy.backtrucks.common.service.EntityService;
 import by.baranavichy.backtrucks.importing.converter.CountryImportConverter;
 import by.baranavichy.backtrucks.importing.converter.ImportConverter;
 import by.baranavichy.backtrucks.importing.model.CountryImportTO;
+import by.baranavichy.backtrucks.importing.model.column.CountryColumn;
 import by.baranavichy.backtrucks.importing.parser.CountryImportParser;
 import by.baranavichy.backtrucks.importing.parser.ImportParser;
 import by.baranavichy.backtrucks.importing.service.CountryImportService;
@@ -28,7 +29,7 @@ public class CountryImportServiceImpl
     private final CountryImportConverter countryImportConverter;
 
     @Override
-    protected ImportParser<CountryImportTO> getParser() {
+    protected ImportParser<CountryImportTO, CountryColumn> getParser() {
         return this.countryImportParser;
     }
 

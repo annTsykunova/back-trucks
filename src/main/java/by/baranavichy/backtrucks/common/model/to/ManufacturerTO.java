@@ -11,6 +11,6 @@ public class ManufacturerTO {
 
     private Long id;
     private String name;
-    private CountryTO countryTO;
+    private CountryTO country;
 
 }

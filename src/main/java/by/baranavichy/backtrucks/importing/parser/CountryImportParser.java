@@ -16,10 +16,10 @@ import java.util.function.Supplier;
  */
 
 @Component
-public class CountryImportParser extends ImportParser<CountryImportTO> {
+public class CountryImportParser extends ImportParser<CountryImportTO, CountryColumn> {
 
     public CountryImportParser() {
-        super(CountryColumn.class);
+        super(CountryColumn.values());
     }
 
     @Override
@@ -38,5 +38,4 @@ public class CountryImportParser extends ImportParser<CountryImportTO> {
     protected Supplier<CountryImportTO> getNewImportTO() {
         return CountryImportTO::new;
     }
-
 }

@@ -6,6 +6,7 @@ import by.baranavichy.backtrucks.common.service.EntityService;
 import by.baranavichy.backtrucks.importing.converter.EngineImportConverter;
 import by.baranavichy.backtrucks.importing.converter.ImportConverter;
 import by.baranavichy.backtrucks.importing.model.EngineImportTO;
+import by.baranavichy.backtrucks.importing.model.column.EngineColumn;
 import by.baranavichy.backtrucks.importing.parser.EngineImportParser;
 import by.baranavichy.backtrucks.importing.parser.ImportParser;
 import by.baranavichy.backtrucks.importing.service.EngineImportService;
@@ -31,7 +32,7 @@ public class EngineImportServiceImpl
     }
 
     @Override
-    protected ImportParser<EngineImportTO> getParser() {
+    protected ImportParser<EngineImportTO, EngineColumn> getParser() {
         return this.engineImportParser;
     }
 

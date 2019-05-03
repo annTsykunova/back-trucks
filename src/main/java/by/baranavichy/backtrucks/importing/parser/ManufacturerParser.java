@@ -16,10 +16,10 @@ import java.util.function.Supplier;
  */
 
 @Component
-public class ManufacturerParser extends ImportParser<ManufacturerImportTO> {
+public class ManufacturerParser extends ImportParser<ManufacturerImportTO, ManufacturerColumn> {
 
     public ManufacturerParser() {
-        super(ManufacturerColumn.class);
+        super(ManufacturerColumn.values());
     }
 
     @Override
@@ -38,6 +38,5 @@ public class ManufacturerParser extends ImportParser<ManufacturerImportTO> {
     protected Supplier<ManufacturerImportTO> getNewImportTO() {
         return ManufacturerImportTO::new;
     }
-
 
 }

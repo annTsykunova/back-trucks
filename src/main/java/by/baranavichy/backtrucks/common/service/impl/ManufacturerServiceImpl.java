@@ -44,7 +44,7 @@ public class ManufacturerServiceImpl
     protected Manufacturer fetchPersistedChildren(ManufacturerTO toToSave) {
         Manufacturer manufacturer = manufacturerConverter.convertToEntity(toToSave);
 
-        Optional<Country> maybeCountry = countryRepository.findByCodeIgnoreCase(toToSave.getCountryTO().getCode());
+        Optional<Country> maybeCountry = countryRepository.findByCodeIgnoreCase(toToSave.getCountry().getCode());
         maybeCountry.ifPresent(manufacturer::setCountry);
         return manufacturer;
     }

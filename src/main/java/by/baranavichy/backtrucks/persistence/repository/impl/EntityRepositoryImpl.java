@@ -9,6 +9,6 @@ import lombok.RequiredArgsConstructor;
  */
 
 @RequiredArgsConstructor
-public class EntityRepositoryImpl<E extends AbstractEntity> implements EntityRepository<E> {
+public class EntityRepositoryImpl<E extends AbstractEntity, ID> implements EntityRepository<E> {
 
 }

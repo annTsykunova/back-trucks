@@ -21,7 +21,7 @@ public class ManufacturerImportConverterImpl implements ManufacturerImportConver
         countryTO.setCode(importTo.getCountryCode());
 
         manufacturerTO.setName(importTo.getName());
-        manufacturerTO.setCountryTO(countryTO);
+        manufacturerTO.setCountry(countryTO);
 
         return manufacturerTO;
     }

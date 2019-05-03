@@ -22,8 +22,8 @@ public class ManufacturerConverter implements EntityTOConverter<Manufacturer, Ma
     public Manufacturer convertToEntity(ManufacturerTO to) {
         Manufacturer manufacturer = new Manufacturer();
         manufacturer.setName(to.getName());
-        if (to.getCountryTO() != null) {
-            manufacturer.setCountry(countryConverter.convertToEntity(to.getCountryTO()));
+        if (to.getCountry() != null) {
+            manufacturer.setCountry(countryConverter.convertToEntity(to.getCountry()));
         }
         return manufacturer;
     }
@@ -34,7 +34,7 @@ public class ManufacturerConverter implements EntityTOConverter<Manufacturer, Ma
         manufacturerTO.setId(entity.getId());
         manufacturerTO.setName(entity.getName());
         if (entity.getCountry() != null) {
-            manufacturerTO.setCountryTO(countryConverter.convertToTO(entity.getCountry()));
+            manufacturerTO.setCountry(countryConverter.convertToTO(entity.getCountry()));
         }
         return manufacturerTO;
     }

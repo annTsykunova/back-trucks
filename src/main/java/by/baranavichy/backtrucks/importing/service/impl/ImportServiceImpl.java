@@ -9,7 +9,6 @@ import by.baranavichy.backtrucks.importing.service.ImportService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.stream.Stream;
 
 /**
@@ -19,16 +18,12 @@ public abstract class ImportServiceImpl<T, I extends ImportTO> implements Import
 
     @Override
     public void importData(MultipartFile file) {
-        try {
-            Stream<I> importTOS = getParser().parse(file);
-            importTOS.map(this::toActionToPair)
-                    .forEach(this::processImportTo);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Stream<I> importTOS = getParser().parse(file);
+        importTOS.map(this::toActionToPair)
+                .forEach(this::processImportTo);
     }
 
-    protected abstract ImportParser<I> getParser();
+    protected abstract ImportParser<I, ? extends Enum<?>> getParser();
 
     protected abstract EntityService<T> getEntityService();
 
