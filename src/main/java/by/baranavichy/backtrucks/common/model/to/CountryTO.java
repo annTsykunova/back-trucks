@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class CountryTO {
 
+    private Long id;
     private String name;
     private String code;
 

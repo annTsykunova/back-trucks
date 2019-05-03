@@ -15,6 +15,7 @@ public class CountryConverter implements EntityTOConverter<Country, CountryTO> {
     @Override
     public Country convertToEntity(CountryTO to) {
         Country country = new Country();
+        country.setId(to.getId());
         country.setName(to.getName());
         country.setCode(to.getCode());
         return country;
@@ -23,6 +24,7 @@ public class CountryConverter implements EntityTOConverter<Country, CountryTO> {
     @Override
     public CountryTO convertToTO(Country entity) {
         CountryTO country = new CountryTO();
+        country.setId(entity.getId());
         country.setName(entity.getName());
         country.setCode(entity.getCode());
         return country;

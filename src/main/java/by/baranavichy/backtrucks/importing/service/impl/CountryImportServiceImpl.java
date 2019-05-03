@@ -45,6 +45,7 @@ public class CountryImportServiceImpl
     @Override
     protected CountryTO getEnrichedTO(CountryTO toToEnrich) {
         toToEnrich.setName(StringUtils.capitalize(toToEnrich.getName().toLowerCase()));
+        toToEnrich.setCode(toToEnrich.getCode().toUpperCase());
         return toToEnrich;
     }
 }

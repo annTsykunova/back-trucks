@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class ManufacturerTO {
 
+    private Long id;
     private String name;
     private CountryTO countryTO;
 

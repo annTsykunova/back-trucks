@@ -12,17 +12,30 @@ import org.springframework.stereotype.Component;
 @Component
 public class ManufacturerConverter implements EntityTOConverter<Manufacturer, ManufacturerTO> {
 
+    private final CountryConverter countryConverter;
+
+    public ManufacturerConverter(CountryConverter countryConverter) {
+        this.countryConverter = countryConverter;
+    }
+
     @Override
     public Manufacturer convertToEntity(ManufacturerTO to) {
         Manufacturer manufacturer = new Manufacturer();
         manufacturer.setName(to.getName());
+        if (to.getCountryTO() != null) {
+            manufacturer.setCountry(countryConverter.convertToEntity(to.getCountryTO()));
+        }
         return manufacturer;
     }
 
     @Override
     public ManufacturerTO convertToTO(Manufacturer entity) {
         ManufacturerTO manufacturerTO = new ManufacturerTO();
+        manufacturerTO.setId(entity.getId());
         manufacturerTO.setName(entity.getName());
+        if (entity.getCountry() != null) {
+            manufacturerTO.setCountryTO(countryConverter.convertToTO(entity.getCountry()));
+        }
         return manufacturerTO;
     }
 }

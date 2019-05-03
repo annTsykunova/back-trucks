@@ -3,6 +3,7 @@ package by.baranavichy.backtrucks.common.service.impl;
 import by.baranavichy.backtrucks.common.converter.EntityTOConverter;
 import by.baranavichy.backtrucks.common.model.to.EngineTO;
 import by.baranavichy.backtrucks.common.service.EngineService;
+import by.baranavichy.backtrucks.common.service.EntityServiceImpl;
 import by.baranavichy.backtrucks.persistence.model.Engine;
 import by.baranavichy.backtrucks.persistence.repository.EngineRepository;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,4 @@ public class EngineServiceImpl
     protected Optional<Engine> getExistingEntity(Engine entityToSave) {
         return engineRepository.findByName(entityToSave.getName());
     }
-
 }
