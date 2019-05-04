@@ -51,7 +51,7 @@ public class ManufacturerServiceImpl
 
     @Override
     protected Optional<Manufacturer> getExistingEntity(Manufacturer entityToSave) {
-        return manufacturerRepository.findByName(entityToSave.getName());
+        return manufacturerRepository.findByNameIgnoreCase(entityToSave.getName());
     }
 
 }

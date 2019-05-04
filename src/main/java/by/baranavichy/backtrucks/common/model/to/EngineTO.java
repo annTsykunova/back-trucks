@@ -9,10 +9,9 @@ import lombok.Data;
 @Data
 public class EngineTO {
 
+    private Long id;
     private String name;
-
     private short displacement;
-
     private ManufacturerTO manufacturerTO;
 
 //    @OneToMany(mappedBy = "engine")

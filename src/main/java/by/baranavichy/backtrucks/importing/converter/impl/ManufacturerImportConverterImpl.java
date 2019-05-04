@@ -16,11 +16,10 @@ public class ManufacturerImportConverterImpl implements ManufacturerImportConver
     @Override
     public ManufacturerTO toTo(ManufacturerImportTO importTo) {
         ManufacturerTO manufacturerTO = new ManufacturerTO();
+        manufacturerTO.setName(importTo.getName());
 
         CountryTO countryTO = new CountryTO();
         countryTO.setCode(importTo.getCountryCode());
-
-        manufacturerTO.setName(importTo.getName());
         manufacturerTO.setCountry(countryTO);
 
         return manufacturerTO;

@@ -14,7 +14,7 @@ public enum EngineColumn implements RequirableColumn {
     ACTION(true),
     NAME(true),
     DISPLACEMENT(true),
-    MANUFACTURER_NAME(true);
+    MANUFACTURER(true);
 
     private boolean isRequired;
 

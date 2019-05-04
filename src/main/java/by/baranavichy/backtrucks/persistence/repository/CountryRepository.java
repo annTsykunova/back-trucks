@@ -11,10 +11,12 @@ import java.util.Optional;
  */
 
 @Repository
-public interface CountryRepository extends JpaRepository<Country, Long>, EntityRepository<Country> {
-
-    Optional<Country> findByName(String name);
+public interface CountryRepository extends JpaRepository<Country, Long>, EntityRepository<Country, String> {
 
     Optional<Country> findByCodeIgnoreCase(String code);
 
+//    @Override
+//    default Optional<Country> findByUniqueIdentifier(String businessIdentifier) {
+//        return findByCodeIgnoreCase(businessIdentifier);
+//    };
 }

@@ -46,8 +46,4 @@ public class EngineImportServiceImpl
         return this.engineImportConverter;
     }
 
-    @Override
-    protected EngineTO getEnrichedTO(EngineTO toToEnrich) {
-        return toToEnrich;
-    }
 }

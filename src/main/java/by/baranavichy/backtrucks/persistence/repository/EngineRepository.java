@@ -8,7 +8,7 @@ import java.util.Optional;
 /**
  * Created by Vanya on 29.04.2019.
  */
-public interface EngineRepository extends JpaRepository<Engine, Long>, EntityRepository<Engine> {
+public interface EngineRepository extends JpaRepository<Engine, Long>, EntityRepository<Engine, String> {
 
     Optional<Engine> findByName(String name);
 

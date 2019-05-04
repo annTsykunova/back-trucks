@@ -31,7 +31,7 @@ public class EngineImportParser extends ImportParser<EngineImportTO, EngineColum
                 }, EngineImportTO::setAction),
                 GetterSetterPair.of(record -> record.get(EngineColumn.NAME), EngineImportTO::setName),
                 GetterSetterPair.of(record -> Short.valueOf(record.get(EngineColumn.DISPLACEMENT)), EngineImportTO::setDisplacement),
-                GetterSetterPair.of(record -> record.get(EngineColumn.MANUFACTURER_NAME), EngineImportTO::setManufacturerName)
+                GetterSetterPair.of(record -> record.get(EngineColumn.MANUFACTURER), EngineImportTO::setManufacturerName)
         );
     }
 

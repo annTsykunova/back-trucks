@@ -29,13 +29,10 @@ public abstract class ImportServiceImpl<T, I extends ImportTO> implements Import
 
     protected abstract ImportConverter<T, I> getImportConverter();
 
-    protected abstract T getEnrichedTO(T toToEnrich);
-
     private ActionToPair toActionToPair(I importTo) {
         Action action = importTo.getAction();
         T to = getImportConverter().toTo(importTo);
-        T enrichedTO = getEnrichedTO(to);
-        return new ActionToPair(action, enrichedTO);
+        return new ActionToPair(action, to);
     }
 
     private void processImportTo(ActionToPair actionToPair) {

@@ -11,8 +11,10 @@ import java.util.Optional;
  */
 
 @Repository
-public interface ManufacturerRepository extends JpaRepository<Manufacturer, Long>, EntityRepository<Manufacturer> {
+public interface ManufacturerRepository
+        extends JpaRepository<Manufacturer, Long>,
+        EntityRepository<Manufacturer, String> {
 
-    Optional<Manufacturer> findByName(String name);
+    Optional<Manufacturer> findByNameIgnoreCase(String name);
 
 }

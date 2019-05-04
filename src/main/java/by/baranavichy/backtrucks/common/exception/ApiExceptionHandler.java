@@ -19,6 +19,11 @@ public class ApiExceptionHandler {
         return handle(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(Exception.class)
+    public HttpEntity<?> handle(Exception e) {
+        return handle("Unexpected error", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     private ResponseEntity<?> handle(String message, HttpStatus status) {
         return new ResponseEntity<>(message, status);
     }

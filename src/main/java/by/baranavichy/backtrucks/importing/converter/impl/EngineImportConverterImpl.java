@@ -16,12 +16,13 @@ public class EngineImportConverterImpl implements EngineImportConverter {
     @Override
     public EngineTO toTo(EngineImportTO importTo) {
         EngineTO engineTO = new EngineTO();
-
-        ManufacturerTO manufacturerTO = new ManufacturerTO();
-        manufacturerTO.setName(importTo.getName());
-
         engineTO.setName(importTo.getName());
         engineTO.setDisplacement(importTo.getDisplacement());
-        return null;
+
+        ManufacturerTO manufacturerTO = new ManufacturerTO();
+        manufacturerTO.setName(importTo.getManufacturerName());
+        engineTO.setManufacturerTO(manufacturerTO);
+
+        return engineTO;
     }
 }

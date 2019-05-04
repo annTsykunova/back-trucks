@@ -11,12 +11,9 @@ import by.baranavichy.backtrucks.importing.model.column.ManufacturerColumn;
 import by.baranavichy.backtrucks.importing.parser.ImportParser;
 import by.baranavichy.backtrucks.importing.parser.ManufacturerParser;
 import by.baranavichy.backtrucks.importing.service.ManufacturerImportService;
-import by.baranavichy.backtrucks.persistence.model.Country;
 import by.baranavichy.backtrucks.persistence.repository.CountryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * Created by Vanya on 27.04.2019.
@@ -48,16 +45,5 @@ public class ManufacturerImportServiceImpl
     protected ImportConverter<ManufacturerTO, ManufacturerImportTO> getImportConverter() {
         return this.manufacturerImportConverter;
     }
-
-    @Override
-    protected ManufacturerTO getEnrichedTO(ManufacturerTO toToEnrich) {
-        String countryCode = toToEnrich.getCountry().getCode();
-        if (countryCode != null) {
-            Optional<Country> maybeCountry = countryRepository.findByCodeIgnoreCase(countryCode);
-            maybeCountry.ifPresent(country -> toToEnrich.setCountry(countryConverter.convertToTO(country)));
-        }
-        return toToEnrich;
-    }
-
 
 }

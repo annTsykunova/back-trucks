@@ -15,6 +15,7 @@ public class EngineConverter implements EntityTOConverter<Engine, EngineTO> {
     @Override
     public Engine convertToEntity(EngineTO to) {
         Engine engine = new Engine();
+        engine.setId(to.getId());
         engine.setName(to.getName());
         engine.setDisplacement(to.getDisplacement());
         return engine;
@@ -23,8 +24,9 @@ public class EngineConverter implements EntityTOConverter<Engine, EngineTO> {
     @Override
     public EngineTO convertToTO(Engine entity) {
         EngineTO engineTO = new EngineTO();
+        engineTO.setId(entity.getId());
         engineTO.setName(entity.getName());
         engineTO.setDisplacement(entity.getDisplacement());
-        return null;
+        return engineTO;
     }
 }

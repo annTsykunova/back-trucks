@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 
 @Controller
-@RequestMapping("/import/enigines")
+@RequestMapping("/import/engines")
 public class EngineImportController {
 
     private final EngineImportService engineImportService;
