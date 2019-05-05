@@ -12,7 +12,7 @@ public class EngineTO {
     private Long id;
     private String name;
     private short displacement;
-    private ManufacturerTO manufacturerTO;
+    private ManufacturerTO manufacturer;
 
 //    @OneToMany(mappedBy = "engine")
 //    private List<ModelEngine> modelEngines;

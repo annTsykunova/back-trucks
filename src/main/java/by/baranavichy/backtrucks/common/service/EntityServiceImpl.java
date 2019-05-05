@@ -27,7 +27,7 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
     @Override
     @Transactional
     public T save(T to) {
-        E entityToSave = fetchPersistedChildren(to);
+        E entityToSave = convertToEntity(to);
         Optional<E> maybeExistingEntity = getExistingEntity(entityToSave);
 
         maybeExistingEntity.ifPresent(existingEntity -> entityToSave.setId(existingEntity.getId()));
@@ -45,7 +45,5 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
 
     protected abstract Optional<E> getExistingEntity(E entityToSave);
 
-    protected E fetchPersistedChildren(T toToSave) {
-        return converter.convertToEntity(toToSave);
-    }
+    protected abstract E convertToEntity(T toToSave);
 }

@@ -4,6 +4,7 @@ import by.baranavichy.backtrucks.common.model.to.EngineTO;
 import by.baranavichy.backtrucks.common.model.to.ManufacturerTO;
 import by.baranavichy.backtrucks.importing.converter.EngineImportConverter;
 import by.baranavichy.backtrucks.importing.model.EngineImportTO;
+import by.baranavichy.backtrucks.util.WordUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,8 +21,8 @@ public class EngineImportConverterImpl implements EngineImportConverter {
         engineTO.setDisplacement(importTo.getDisplacement());
 
         ManufacturerTO manufacturerTO = new ManufacturerTO();
-        manufacturerTO.setName(importTo.getManufacturerName());
-        engineTO.setManufacturerTO(manufacturerTO);
+        manufacturerTO.setName(WordUtils.capitalizeEachWord(importTo.getManufacturerName()));
+        engineTO.setManufacturer(manufacturerTO);
 
         return engineTO;
     }

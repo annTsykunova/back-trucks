@@ -12,6 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class EngineConverter implements EntityTOConverter<Engine, EngineTO> {
 
+    private final ManufacturerConverter manufacturerConverter;
+
+    public EngineConverter(ManufacturerConverter manufacturerConverter) {
+        this.manufacturerConverter = manufacturerConverter;
+    }
+
     @Override
     public Engine convertToEntity(EngineTO to) {
         Engine engine = new Engine();
@@ -27,6 +33,7 @@ public class EngineConverter implements EntityTOConverter<Engine, EngineTO> {
         engineTO.setId(entity.getId());
         engineTO.setName(entity.getName());
         engineTO.setDisplacement(entity.getDisplacement());
+        engineTO.setManufacturer(manufacturerConverter.convertToTO(entity.getManufacturer()));
         return engineTO;
     }
 }

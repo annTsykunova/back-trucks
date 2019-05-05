@@ -3,7 +3,7 @@ package by.baranavichy.backtrucks.importing.converter.impl;
 import by.baranavichy.backtrucks.common.model.to.CountryTO;
 import by.baranavichy.backtrucks.importing.converter.CountryImportConverter;
 import by.baranavichy.backtrucks.importing.model.CountryImportTO;
-import org.apache.commons.lang3.StringUtils;
+import by.baranavichy.backtrucks.util.WordUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,7 +17,7 @@ public class CountryImportConverterImpl implements CountryImportConverter {
     public CountryTO toTo(CountryImportTO importTo) {
         CountryTO countryTO = new CountryTO();
 
-        countryTO.setName(StringUtils.capitalize(importTo.getName().toLowerCase()));
+        countryTO.setName(WordUtils.capitalizeEachWord(importTo.getName().toLowerCase()));
         countryTO.setCode(importTo.getCode().toUpperCase());
 
         return countryTO;

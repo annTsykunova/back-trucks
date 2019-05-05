@@ -19,15 +19,22 @@ public class CountryServiceImpl
         extends EntityServiceImpl<Country, CountryTO, Long>
         implements CountryService {
 
+    private final CountryConverter countryConverter;
     private final CountryRepository countryRepository;
 
     public CountryServiceImpl(CountryConverter countryConverter, CountryRepository countryRepository) {
         super(countryConverter, countryRepository);
+        this.countryConverter = countryConverter;
         this.countryRepository = countryRepository;
     }
 
     @Override
     protected Optional<Country> getExistingEntity(Country entityToSave) {
         return countryRepository.findByCodeIgnoreCase(entityToSave.getCode());
+    }
+
+    @Override
+    protected Country convertToEntity(CountryTO toToSave) {
+        return countryConverter.convertToEntity(toToSave);
     }
 }

@@ -4,6 +4,7 @@ import by.baranavichy.backtrucks.common.model.to.CountryTO;
 import by.baranavichy.backtrucks.common.model.to.ManufacturerTO;
 import by.baranavichy.backtrucks.importing.converter.ManufacturerImportConverter;
 import by.baranavichy.backtrucks.importing.model.ManufacturerImportTO;
+import by.baranavichy.backtrucks.util.WordUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,7 +17,7 @@ public class ManufacturerImportConverterImpl implements ManufacturerImportConver
     @Override
     public ManufacturerTO toTo(ManufacturerImportTO importTo) {
         ManufacturerTO manufacturerTO = new ManufacturerTO();
-        manufacturerTO.setName(importTo.getName());
+        manufacturerTO.setName(WordUtils.capitalizeEachWord(importTo.getName()));
 
         CountryTO countryTO = new CountryTO();
         countryTO.setCode(importTo.getCountryCode());

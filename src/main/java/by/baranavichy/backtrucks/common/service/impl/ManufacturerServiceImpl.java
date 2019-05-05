@@ -26,22 +26,18 @@ public class ManufacturerServiceImpl
 
     private final ManufacturerRepository manufacturerRepository;
     private final CountryRepository countryRepository;
-    private final CountryService countryService;
     private final ManufacturerConverter manufacturerConverter;
-    private final CountryConverter countryConverter;
 
     public ManufacturerServiceImpl(ManufacturerRepository manufacturerRepository, CountryRepository countryRepository, CountryService countryService, ManufacturerConverter manufacturerConverter, CountryConverter countryConverter) {
         super(manufacturerConverter, manufacturerRepository);
         this.manufacturerRepository = manufacturerRepository;
         this.countryRepository = countryRepository;
-        this.countryService = countryService;
         this.manufacturerConverter = manufacturerConverter;
-        this.countryConverter = countryConverter;
     }
 
     @Override
     @Transactional
-    protected Manufacturer fetchPersistedChildren(ManufacturerTO toToSave) {
+    protected Manufacturer convertToEntity(ManufacturerTO toToSave) {
         Manufacturer manufacturer = manufacturerConverter.convertToEntity(toToSave);
 
         Optional<Country> maybeCountry = countryRepository.findByCodeIgnoreCase(toToSave.getCountry().getCode());
