@@ -1,6 +1,7 @@
 package by.baranavichy.backtrucks.common.service;
 
 import by.baranavichy.backtrucks.common.converter.EntityTOConverter;
+import by.baranavichy.backtrucks.common.enricher.ToEnricher;
 import by.baranavichy.backtrucks.persistence.model.AbstractEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,6 +18,7 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
 
     private final EntityTOConverter<E, T> converter;
     private final JpaRepository<E, ID> jpaRepository;
+    private final ToEnricher<T> toEnricher;
 
     @Override
     public Collection<T> getAll() {
@@ -27,7 +29,8 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
     @Override
     @Transactional
     public T save(T to) {
-        E entityToSave = convertToEntity(to);
+        T enrichedTo = toEnricher.enrich(to);
+        E entityToSave = converter.convertToEntity(enrichedTo);
         Optional<E> maybeExistingEntity = getExistingEntity(entityToSave);
 
         maybeExistingEntity.ifPresent(existingEntity -> entityToSave.setId(existingEntity.getId()));
@@ -45,5 +48,4 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
 
     protected abstract Optional<E> getExistingEntity(E entityToSave);
 
-    protected abstract E convertToEntity(T toToSave);
 }

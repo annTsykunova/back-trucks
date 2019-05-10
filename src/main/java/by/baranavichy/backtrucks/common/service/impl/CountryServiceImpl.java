@@ -1,6 +1,7 @@
 package by.baranavichy.backtrucks.common.service.impl;
 
 import by.baranavichy.backtrucks.common.converter.impl.CountryConverter;
+import by.baranavichy.backtrucks.common.enricher.impl.CountryEnricher;
 import by.baranavichy.backtrucks.common.model.to.CountryTO;
 import by.baranavichy.backtrucks.common.service.CountryService;
 import by.baranavichy.backtrucks.common.service.EntityServiceImpl;
@@ -19,12 +20,11 @@ public class CountryServiceImpl
         extends EntityServiceImpl<Country, CountryTO, Long>
         implements CountryService {
 
-    private final CountryConverter countryConverter;
     private final CountryRepository countryRepository;
 
-    public CountryServiceImpl(CountryConverter countryConverter, CountryRepository countryRepository) {
-        super(countryConverter, countryRepository);
-        this.countryConverter = countryConverter;
+    public CountryServiceImpl(CountryConverter countryConverter, CountryRepository countryRepository,
+                              CountryEnricher countryEnricher) {
+        super(countryConverter, countryRepository, countryEnricher);
         this.countryRepository = countryRepository;
     }
 
@@ -33,8 +33,4 @@ public class CountryServiceImpl
         return countryRepository.findByCodeIgnoreCase(entityToSave.getCode());
     }
 
-    @Override
-    protected Country convertToEntity(CountryTO toToSave) {
-        return countryConverter.convertToEntity(toToSave);
-    }
 }
