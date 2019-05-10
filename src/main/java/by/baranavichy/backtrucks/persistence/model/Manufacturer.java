@@ -2,6 +2,7 @@ package by.baranavichy.backtrucks.persistence.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true)
+@ToString(exclude = {"models"})
 public class Manufacturer extends AbstractEntity {
 
     @Column(unique = true)

@@ -2,12 +2,13 @@ package by.baranavichy.backtrucks.persistence.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Vanya on 29.04.2019.
@@ -15,18 +16,19 @@ import java.util.List;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = {"modelEngines"})
+@ToString(exclude = {"modelEngines"})
 public class Engine extends AbstractEntity {
 
     private String name;
 
-    private short displacement;
+    private Short displacement;
 
     @ManyToOne
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
     @OneToMany(mappedBy = "engine")
-    private List<ModelEngine> modelEngines;
+    private Set<ModelEngine> modelEngines;
 
 }

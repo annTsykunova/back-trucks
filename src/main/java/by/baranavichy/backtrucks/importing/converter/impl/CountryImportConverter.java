@@ -1,7 +1,7 @@
 package by.baranavichy.backtrucks.importing.converter.impl;
 
 import by.baranavichy.backtrucks.common.model.to.CountryTO;
-import by.baranavichy.backtrucks.importing.converter.CountryImportConverter;
+import by.baranavichy.backtrucks.importing.converter.ImportConverter;
 import by.baranavichy.backtrucks.importing.model.CountryImportTO;
 import by.baranavichy.backtrucks.util.WordUtils;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class CountryImportConverterImpl implements CountryImportConverter {
+public class CountryImportConverter implements ImportConverter<CountryTO, CountryImportTO> {
 
     @Override
     public CountryTO toTo(CountryImportTO importTo) {

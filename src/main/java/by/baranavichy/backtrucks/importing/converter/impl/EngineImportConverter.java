@@ -2,7 +2,7 @@ package by.baranavichy.backtrucks.importing.converter.impl;
 
 import by.baranavichy.backtrucks.common.model.to.EngineTO;
 import by.baranavichy.backtrucks.common.model.to.ManufacturerTO;
-import by.baranavichy.backtrucks.importing.converter.EngineImportConverter;
+import by.baranavichy.backtrucks.importing.converter.ImportConverter;
 import by.baranavichy.backtrucks.importing.model.EngineImportTO;
 import by.baranavichy.backtrucks.util.WordUtils;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class EngineImportConverterImpl implements EngineImportConverter {
+public class EngineImportConverter implements ImportConverter<EngineTO, EngineImportTO> {
 
     @Override
     public EngineTO toTo(EngineImportTO importTo) {

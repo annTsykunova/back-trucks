@@ -35,7 +35,7 @@ public class EngineServiceImpl
 
     @Override
     protected Optional<Engine> getExistingEntity(Engine entityToSave) {
-        return engineRepository.findByName(entityToSave.getName());
+        return engineRepository.findByNameIgnoreCase(entityToSave.getName());
     }
 
     @Override

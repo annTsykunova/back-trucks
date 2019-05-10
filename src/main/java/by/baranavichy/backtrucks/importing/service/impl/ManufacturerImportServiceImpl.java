@@ -5,7 +5,7 @@ import by.baranavichy.backtrucks.common.model.to.ManufacturerTO;
 import by.baranavichy.backtrucks.common.service.EntityService;
 import by.baranavichy.backtrucks.common.service.ManufacturerService;
 import by.baranavichy.backtrucks.importing.converter.ImportConverter;
-import by.baranavichy.backtrucks.importing.converter.ManufacturerImportConverter;
+import by.baranavichy.backtrucks.importing.converter.impl.ManufacturerImportConverter;
 import by.baranavichy.backtrucks.importing.model.ManufacturerImportTO;
 import by.baranavichy.backtrucks.importing.model.column.ManufacturerColumn;
 import by.baranavichy.backtrucks.importing.parser.ImportParser;

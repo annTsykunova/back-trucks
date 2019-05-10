@@ -3,6 +3,7 @@ package by.baranavichy.backtrucks.common.converter.impl;
 import by.baranavichy.backtrucks.common.converter.EntityTOConverter;
 import by.baranavichy.backtrucks.common.model.to.ManufacturerTO;
 import by.baranavichy.backtrucks.persistence.model.Manufacturer;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,13 +11,10 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@RequiredArgsConstructor
 public class ManufacturerConverter implements EntityTOConverter<Manufacturer, ManufacturerTO> {
 
     private final CountryConverter countryConverter;
-
-    public ManufacturerConverter(CountryConverter countryConverter) {
-        this.countryConverter = countryConverter;
-    }
 
     @Override
     public Manufacturer convertToEntity(ManufacturerTO to) {

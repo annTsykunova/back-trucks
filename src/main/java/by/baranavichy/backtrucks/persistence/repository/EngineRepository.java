@@ -10,6 +10,6 @@ import java.util.Optional;
  */
 public interface EngineRepository extends JpaRepository<Engine, Long>, EntityRepository<Engine, String> {
 
-    Optional<Engine> findByName(String name);
+    Optional<Engine> findByNameIgnoreCase(String name);
 
 }

@@ -3,6 +3,7 @@ package by.baranavichy.backtrucks.common.converter.impl;
 import by.baranavichy.backtrucks.common.converter.EntityTOConverter;
 import by.baranavichy.backtrucks.common.model.to.EngineTO;
 import by.baranavichy.backtrucks.persistence.model.Engine;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,13 +11,10 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@RequiredArgsConstructor
 public class EngineConverter implements EntityTOConverter<Engine, EngineTO> {
 
     private final ManufacturerConverter manufacturerConverter;
-
-    public EngineConverter(ManufacturerConverter manufacturerConverter) {
-        this.manufacturerConverter = manufacturerConverter;
-    }
 
     @Override
     public Engine convertToEntity(EngineTO to) {
@@ -33,7 +31,9 @@ public class EngineConverter implements EntityTOConverter<Engine, EngineTO> {
         engineTO.setId(entity.getId());
         engineTO.setName(entity.getName());
         engineTO.setDisplacement(entity.getDisplacement());
-        engineTO.setManufacturer(manufacturerConverter.convertToTO(entity.getManufacturer()));
+        if (entity.getManufacturer() != null) {
+            engineTO.setManufacturer(manufacturerConverter.convertToTO(entity.getManufacturer()));
+        }
         return engineTO;
     }
 }
