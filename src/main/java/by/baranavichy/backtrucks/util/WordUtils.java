@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class WordUtils {
 
-    private WordUtils() {
-    }
-
     public static String capitalizeEachWord(String stringToCapitalize) {
         return Arrays.stream(stringToCapitalize.split(" "))
                 .map(StringUtils::capitalize)
                 .collect(Collectors.joining(" "));
+    }
+
+    private WordUtils() {
     }
 
 }

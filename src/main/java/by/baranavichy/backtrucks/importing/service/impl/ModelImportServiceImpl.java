@@ -32,7 +32,7 @@ public class ModelImportServiceImpl
     }
 
     @Override
-    protected EntityService<ModelTO> getEntityService() {
+    protected EntityService<ModelTO, ?> getEntityService() {
         return modelService;
     }
 

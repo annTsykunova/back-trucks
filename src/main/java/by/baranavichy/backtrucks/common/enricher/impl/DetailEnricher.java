@@ -1,8 +1,7 @@
 package by.baranavichy.backtrucks.common.enricher.impl;
 
 import by.baranavichy.backtrucks.common.enricher.ToEnricher;
-import by.baranavichy.backtrucks.common.model.to.CountryTO;
-import lombok.RequiredArgsConstructor;
+import by.baranavichy.backtrucks.common.model.to.DetailTO;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@RequiredArgsConstructor
-public class CountryEnricher extends ToEnricher<CountryTO> {
+public class DetailEnricher extends ToEnricher<DetailTO> {
 
 }

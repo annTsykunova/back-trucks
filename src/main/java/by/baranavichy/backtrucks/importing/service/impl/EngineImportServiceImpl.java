@@ -37,7 +37,7 @@ public class EngineImportServiceImpl
     }
 
     @Override
-    protected EntityService<EngineTO> getEntityService() {
+    protected EntityService<EngineTO, ?> getEntityService() {
         return this.engineService;
     }
 

@@ -17,6 +17,8 @@ public abstract class ToEnricher<T> {
         return enrichTo(toToEnrich);
     }
 
-    protected abstract T enrichTo(T toToEnrich);
+    protected T enrichTo(T toToEnrich) {
+        return toToEnrich;
+    }
 
 }

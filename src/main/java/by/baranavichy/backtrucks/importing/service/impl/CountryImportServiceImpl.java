@@ -33,7 +33,7 @@ public class CountryImportServiceImpl
     }
 
     @Override
-    protected EntityService<CountryTO> getEntityService() {
+    protected EntityService<CountryTO, ?> getEntityService() {
         return this.countryService;
     }
 

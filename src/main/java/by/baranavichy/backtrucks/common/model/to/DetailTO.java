@@ -4,15 +4,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Created by Vanya on 28.04.2019.
+ * Created by Vanya on 10.05.2019.
  */
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class CountryTO extends AbstractTO {
+public class DetailTO extends AbstractTO {
 
     private String name;
-    private String code;
 
 }
-

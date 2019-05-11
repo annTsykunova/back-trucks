@@ -5,7 +5,9 @@ import java.util.Collection;
 /**
  * Created by Vanya on 27.04.2019.
  */
-public interface EntityService<T> {
+public interface EntityService<T, ID> {
+
+    T getOne(ID id);
 
     Collection<T> getAll();
 

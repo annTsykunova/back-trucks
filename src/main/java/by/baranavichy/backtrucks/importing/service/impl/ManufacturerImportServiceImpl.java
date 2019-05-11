@@ -37,7 +37,7 @@ public class ManufacturerImportServiceImpl
     }
 
     @Override
-    protected EntityService<ManufacturerTO> getEntityService() {
+    protected EntityService<ManufacturerTO, ?> getEntityService() {
         return this.manufacturerService;
     }
 

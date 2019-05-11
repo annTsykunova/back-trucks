@@ -2,6 +2,7 @@ package by.baranavichy.backtrucks.common.service;
 
 import by.baranavichy.backtrucks.common.converter.EntityTOConverter;
 import by.baranavichy.backtrucks.common.enricher.ToEnricher;
+import by.baranavichy.backtrucks.common.exception.ResourceNotFoundException;
 import by.baranavichy.backtrucks.persistence.model.AbstractEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,11 +15,18 @@ import java.util.Optional;
  * Created by Vanya on 27.04.2019.
  */
 @RequiredArgsConstructor
-public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> implements EntityService<T> {
+public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> implements EntityService<T, ID> {
 
     private final EntityTOConverter<E, T> converter;
     private final JpaRepository<E, ID> jpaRepository;
     private final ToEnricher<T> toEnricher;
+
+    @Override
+    public T getOne(ID id) {
+        return jpaRepository.findById(id)
+                .map(converter::convertToTO)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Reource with if:%s not found", id)));
+    }
 
     @Override
     public Collection<T> getAll() {

@@ -1,10 +1,7 @@
 package by.baranavichy.backtrucks.common.model.to;
 
 import by.baranavichy.backtrucks.util.ListUtils;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,9 +12,9 @@ import java.util.List;
  */
 
 @Data
-public class ModelTO {
+@EqualsAndHashCode(callSuper = true)
+public class ModelTO extends AbstractTO {
 
-    private Long id;
     private String name;
     private LocalDate productionDateStart;
     private LocalDate productionDateEnd;

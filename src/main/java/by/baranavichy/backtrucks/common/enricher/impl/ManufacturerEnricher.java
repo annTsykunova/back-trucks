@@ -1,7 +1,6 @@
 package by.baranavichy.backtrucks.common.enricher.impl;
 
 import by.baranavichy.backtrucks.common.converter.impl.CountryConverter;
-import by.baranavichy.backtrucks.common.converter.impl.ManufacturerConverter;
 import by.baranavichy.backtrucks.common.enricher.ToEnricher;
 import by.baranavichy.backtrucks.common.model.to.ManufacturerTO;
 import by.baranavichy.backtrucks.persistence.model.Country;
@@ -20,7 +19,6 @@ import java.util.Optional;
 public class ManufacturerEnricher extends ToEnricher<ManufacturerTO> {
 
     private final CountryRepository countryRepository;
-    private final ManufacturerConverter manufacturerConverter;
     private final CountryConverter countryConverter;
 
     @Override

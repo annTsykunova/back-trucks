@@ -1,15 +1,16 @@
 package by.baranavichy.backtrucks.common.model.to;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Created by Vanya on 29.04.2019.
  */
 
 @Data
-public class EngineTO {
+@EqualsAndHashCode(callSuper = true)
+public class EngineTO extends AbstractTO {
 
-    private Long id;
     private String name;
     private short displacement;
     private ManufacturerTO manufacturer;
