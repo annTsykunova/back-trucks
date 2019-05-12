@@ -1,7 +1,7 @@
 package by.baranavichy.backtrucks.common.service;
 
 import by.baranavichy.backtrucks.common.converter.EntityTOConverter;
-import by.baranavichy.backtrucks.common.enricher.ToEnricher;
+import by.baranavichy.backtrucks.common.enricher.EntityFetcher;
 import by.baranavichy.backtrucks.common.exception.ResourceNotFoundException;
 import by.baranavichy.backtrucks.persistence.model.AbstractEntity;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
 
     private final EntityTOConverter<E, T> converter;
     private final JpaRepository<E, ID> jpaRepository;
-    private final ToEnricher<T> toEnricher;
+    private final EntityFetcher<E> entityFetcher;
 
     @Override
     public T getOne(ID id) {
@@ -37,12 +37,12 @@ public abstract class EntityServiceImpl<E extends AbstractEntity, T, ID> impleme
     @Override
     @Transactional
     public T save(T to) {
-        T enrichedTo = toEnricher.enrich(to);
-        E entityToSave = converter.convertToEntity(enrichedTo);
-        Optional<E> maybeExistingEntity = getExistingEntity(entityToSave);
+        E entityToFetch = converter.convertToEntity(to);
+        E fetchedEntity = entityFetcher.fetch(entityToFetch);
+        Optional<E> maybeExistingEntity = getExistingEntity(fetchedEntity);
 
-        maybeExistingEntity.ifPresent(existingEntity -> entityToSave.setId(existingEntity.getId()));
-        E savedEntity = jpaRepository.save(entityToSave);
+        maybeExistingEntity.ifPresent(existingEntity -> fetchedEntity.setId(existingEntity.getId()));
+        E savedEntity = jpaRepository.save(fetchedEntity);
 
         return converter.convertToTO(savedEntity);
     }

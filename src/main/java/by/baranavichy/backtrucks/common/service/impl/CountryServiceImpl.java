@@ -1,7 +1,7 @@
 package by.baranavichy.backtrucks.common.service.impl;
 
 import by.baranavichy.backtrucks.common.converter.impl.CountryConverter;
-import by.baranavichy.backtrucks.common.enricher.impl.CountryEnricher;
+import by.baranavichy.backtrucks.common.enricher.impl.CountryFetcher;
 import by.baranavichy.backtrucks.common.model.to.CountryTO;
 import by.baranavichy.backtrucks.common.service.CountryService;
 import by.baranavichy.backtrucks.common.service.EntityServiceImpl;
@@ -23,7 +23,7 @@ public class CountryServiceImpl
     private final CountryRepository countryRepository;
 
     public CountryServiceImpl(CountryConverter countryConverter, CountryRepository countryRepository,
-                              CountryEnricher countryEnricher) {
+                              CountryFetcher countryEnricher) {
         super(countryConverter, countryRepository, countryEnricher);
         this.countryRepository = countryRepository;
     }

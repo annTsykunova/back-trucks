@@ -1,7 +1,7 @@
 package by.baranavichy.backtrucks.common.service.impl;
 
 import by.baranavichy.backtrucks.common.converter.impl.DetailConverter;
-import by.baranavichy.backtrucks.common.enricher.impl.DetailEnricher;
+import by.baranavichy.backtrucks.common.enricher.impl.DetailFetcher;
 import by.baranavichy.backtrucks.common.model.to.DetailTO;
 import by.baranavichy.backtrucks.common.service.DetailService;
 import by.baranavichy.backtrucks.common.service.EntityServiceImpl;
@@ -23,7 +23,7 @@ public class DetailServiceImpl
     private final DetailRepository detailRepository;
 
     public DetailServiceImpl(DetailConverter detailConverter, DetailRepository detailRepository,
-                             DetailEnricher detailEnricher) {
+                             DetailFetcher detailEnricher) {
         super(detailConverter, detailRepository, detailEnricher);
         this.detailRepository = detailRepository;
     }

@@ -1,7 +1,7 @@
 package by.baranavichy.backtrucks.common.service.impl;
 
 import by.baranavichy.backtrucks.common.converter.impl.ModelConverter;
-import by.baranavichy.backtrucks.common.enricher.impl.ModelEnricher;
+import by.baranavichy.backtrucks.common.enricher.impl.ModelFetcher;
 import by.baranavichy.backtrucks.common.model.to.ModelTO;
 import by.baranavichy.backtrucks.common.service.EntityServiceImpl;
 import by.baranavichy.backtrucks.common.service.ModelService;
@@ -23,7 +23,7 @@ public class ModelServiceImpl
     private final ModelRepository modelRepository;
 
     public ModelServiceImpl(ModelConverter modelConverter, ModelRepository modelRepository,
-                            ModelEnricher modelEnricher) {
+                            ModelFetcher modelEnricher) {
         super(modelConverter, modelRepository, modelEnricher);
         this.modelRepository = modelRepository;
     }

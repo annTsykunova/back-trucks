@@ -1,7 +1,7 @@
 package by.baranavichy.backtrucks.common.service.impl;
 
 import by.baranavichy.backtrucks.common.converter.impl.ManufacturerConverter;
-import by.baranavichy.backtrucks.common.enricher.impl.ManufacturerEnricher;
+import by.baranavichy.backtrucks.common.enricher.impl.ManufacturerFetcher;
 import by.baranavichy.backtrucks.common.model.to.ManufacturerTO;
 import by.baranavichy.backtrucks.common.service.EntityServiceImpl;
 import by.baranavichy.backtrucks.common.service.ManufacturerService;
@@ -24,7 +24,7 @@ public class ManufacturerServiceImpl
 
     public ManufacturerServiceImpl(ManufacturerRepository manufacturerRepository,
                                    ManufacturerConverter manufacturerConverter,
-                                   ManufacturerEnricher manufacturerEnricher) {
+                                   ManufacturerFetcher manufacturerEnricher) {
         super(manufacturerConverter, manufacturerRepository, manufacturerEnricher);
         this.manufacturerRepository = manufacturerRepository;
     }

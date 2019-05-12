@@ -1,7 +1,7 @@
 package by.baranavichy.backtrucks.common.service.impl;
 
 import by.baranavichy.backtrucks.common.converter.impl.EngineConverter;
-import by.baranavichy.backtrucks.common.enricher.impl.EngineEnricher;
+import by.baranavichy.backtrucks.common.enricher.impl.EngineFetcher;
 import by.baranavichy.backtrucks.common.model.to.EngineTO;
 import by.baranavichy.backtrucks.common.service.EngineService;
 import by.baranavichy.backtrucks.common.service.EntityServiceImpl;
@@ -23,7 +23,7 @@ public class EngineServiceImpl
     private final EngineRepository engineRepository;
 
     public EngineServiceImpl(EngineConverter engineConverter, EngineRepository engineRepository,
-                             EngineEnricher engineEnricher) {
+                             EngineFetcher engineEnricher) {
         super(engineConverter, engineRepository, engineEnricher);
         this.engineRepository = engineRepository;
     }

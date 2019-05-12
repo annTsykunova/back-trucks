@@ -22,6 +22,11 @@ public class EngineConverter implements EntityTOConverter<Engine, EngineTO> {
         engine.setId(to.getId());
         engine.setName(to.getName());
         engine.setDisplacement(to.getDisplacement());
+
+        if (to.getManufacturer() != null) {
+            engine.setManufacturer(manufacturerConverter.convertToEntity(to.getManufacturer()));
+        }
+
         return engine;
     }
 
