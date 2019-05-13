@@ -31,8 +31,9 @@ public class ManufacturerServiceImpl
 
 
     @Override
-    protected Optional<Manufacturer> getExistingEntity(Manufacturer entityToSave) {
-        return manufacturerRepository.findByNameIgnoreCase(entityToSave.getName());
+    protected Optional<Long> getExistingEntityId(Manufacturer entityToSave) {
+        return manufacturerRepository.findByNameIgnoreCase(entityToSave.getName())
+                .map(Manufacturer::getId);
     }
 
 }

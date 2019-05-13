@@ -29,8 +29,9 @@ public class ModelServiceImpl
     }
 
     @Override
-    protected Optional<Model> getExistingEntity(Model entityToSave) {
-        return modelRepository.findByNameIgnoreCase(entityToSave.getName());
+    protected Optional<Long> getExistingEntityId(Model entityToSave) {
+        return modelRepository.findByNameIgnoreCase(entityToSave.getName())
+                .map(Model::getId);
     }
 
 }

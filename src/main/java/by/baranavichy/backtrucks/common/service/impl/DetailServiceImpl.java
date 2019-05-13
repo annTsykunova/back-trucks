@@ -29,7 +29,7 @@ public class DetailServiceImpl
     }
 
     @Override
-    protected Optional<Detail> getExistingEntity(Detail entityToSave) {
-        return detailRepository.findByName(entityToSave.getName());
+    protected Optional<Long> getExistingEntityId(Detail entityToSave) {
+        return detailRepository.findIdByName(entityToSave.getName());
     }
 }

@@ -17,9 +17,11 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(exclude = "manufacturers")
-public class Country extends AbstractEntity {
+public class Country extends AbstractEntity<Long> {
 
+    @Column(nullable = false)
     private String name;
+
     @Column(unique = true, nullable = false)
     private String code;
 

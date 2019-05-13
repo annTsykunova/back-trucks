@@ -1,0 +1,4 @@
+action;MANUFACTURER;name;engine;Year_Start;Year_End
+update;mercedes-benz;sprinter;m50b20;2000;2003
+update;iveco;daily;m50b20;2001;2008
+update;ford;transit;m50b35;2005;2012

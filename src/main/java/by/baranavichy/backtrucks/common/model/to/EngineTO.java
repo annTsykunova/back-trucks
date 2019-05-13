@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class EngineTO extends AbstractTO {
+public class EngineTO extends AbstractTO<Long> {
 
     private String name;
     private short displacement;

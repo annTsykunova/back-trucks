@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Detail extends AbstractEntity {
+public class Detail extends AbstractEntity<Long> {
 
     @Column(nullable = false)
     private String name;

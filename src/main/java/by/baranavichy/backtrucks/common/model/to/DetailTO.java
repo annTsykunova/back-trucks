@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class DetailTO extends AbstractTO {
+public class DetailTO extends AbstractTO<Long> {
 
     private String name;
 

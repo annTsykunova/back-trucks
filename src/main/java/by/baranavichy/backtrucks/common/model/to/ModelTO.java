@@ -1,6 +1,7 @@
 package by.baranavichy.backtrucks.common.model.to;
 
 import by.baranavichy.backtrucks.util.ListUtils;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ModelTO extends AbstractTO {
+public class ModelTO extends AbstractTO<Long> {
 
     private String name;
     private LocalDate productionDateStart;
@@ -29,6 +30,7 @@ public class ModelTO extends AbstractTO {
         return engines.add(engineTO);
     }
 
+    @JsonProperty("engines")
     public List<EngineTO> getEnginesCopy() {
         return ListUtils.copyList(this.engines);
     }

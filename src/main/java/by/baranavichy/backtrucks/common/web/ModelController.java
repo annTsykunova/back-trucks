@@ -4,10 +4,7 @@ import by.baranavichy.backtrucks.common.model.to.ModelTO;
 import by.baranavichy.backtrucks.common.service.ModelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -31,6 +28,11 @@ public class ModelController {
     @GetMapping("/{id}")
     public ModelTO getOne(@PathVariable Long id) {
         return modelService.getOne(id);
+    }
+
+    @PutMapping(value = "/{id}", consumes = {"application/json"})
+    public ModelTO updateOne(@PathVariable Long id, @RequestBody ModelTO modelTO) {
+        return modelService.save(modelTO);
     }
 
 }

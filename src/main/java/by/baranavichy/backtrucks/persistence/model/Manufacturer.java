@@ -15,9 +15,9 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(exclude = {"models"})
-public class Manufacturer extends AbstractEntity {
+public class Manufacturer extends AbstractEntity<Long> {
 
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})

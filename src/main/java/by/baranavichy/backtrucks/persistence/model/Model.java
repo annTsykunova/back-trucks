@@ -16,13 +16,17 @@ import java.util.stream.Collectors;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true, exclude = {"modelEngines"})
-public class Model extends AbstractEntity {
+public class Model extends AbstractEntity<Long> {
 
     @Column(nullable = false)
     private String name;
+    //TODO
+//    @SequenceGenerator()
+//    private String code;
     private LocalDate productionDateStart;
     private LocalDate productionDateEnd;
 
+    //TODO n+1 problem
     @ManyToOne
     @JoinColumn(name = "manufacturer_id", nullable = false)
     private Manufacturer manufacturer;

@@ -7,6 +7,7 @@ import by.baranavichy.backtrucks.common.service.CountryService;
 import by.baranavichy.backtrucks.common.service.EntityServiceImpl;
 import by.baranavichy.backtrucks.persistence.model.Country;
 import by.baranavichy.backtrucks.persistence.repository.CountryRepository;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,6 +17,7 @@ import java.util.Optional;
  */
 
 @Service
+@CacheConfig(cacheNames = {"countries"})
 public class CountryServiceImpl
         extends EntityServiceImpl<Country, CountryTO, Long>
         implements CountryService {
@@ -28,9 +30,16 @@ public class CountryServiceImpl
         this.countryRepository = countryRepository;
     }
 
+//    @Override
+//    @Cacheable
+//    public Collection<CountryTO> getAll() {
+//        return super.getAll();
+//    }
+
     @Override
-    protected Optional<Country> getExistingEntity(Country entityToSave) {
-        return countryRepository.findByCodeIgnoreCase(entityToSave.getCode());
+    protected Optional<Long> getExistingEntityId(Country entityToSave) {
+        return countryRepository.findByCodeIgnoreCase(entityToSave.getCode())
+                .map(Country::getId);
     }
 
 }

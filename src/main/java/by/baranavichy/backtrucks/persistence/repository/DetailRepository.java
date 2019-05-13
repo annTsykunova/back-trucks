@@ -2,6 +2,7 @@ package by.baranavichy.backtrucks.persistence.repository;
 
 import by.baranavichy.backtrucks.persistence.model.Detail;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import java.util.Optional;
  */
 public interface DetailRepository extends JpaRepository<Detail, Long>, EntityRepository<Detail, String> {
 
-    Optional<Detail> findByName(String name);
+    @Query("SELECT d.id FROM Detail d WHERE d.name = :name")
+    Optional<Long> findIdByName(String name);
 
 }

@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @ToString(onlyExplicitlyIncluded = true)
-public class ModelEngine implements Serializable {
+class ModelEngine implements Serializable {
 
     @Id
     @ManyToOne

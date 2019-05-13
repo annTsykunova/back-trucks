@@ -7,8 +7,8 @@ import lombok.Data;
  */
 
 @Data
-public abstract class AbstractTO {
+public abstract class AbstractTO<ID> {
 
-    private Long id;
+    private ID id;
 
 }

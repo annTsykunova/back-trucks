@@ -1,4 +1,4 @@
-name
-mercedes-benz
-iveco
-ford
+action;name;country
+update;mercedes-benz;ger
+update;iveco;ita
+update;ford;ita
