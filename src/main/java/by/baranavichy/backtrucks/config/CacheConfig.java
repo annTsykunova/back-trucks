@@ -20,31 +20,20 @@ import java.util.concurrent.TimeUnit;
 public class CacheConfig {
 
     @Bean
-    public CacheManager cacheManager(
-//            Ticker ticker
-    ) {
-        CaffeineCache messageCache = buildCache("countries",
-//                ticker,
-                5);
-//        CaffeineCache notificationCache = buildCache("notifications", ticker, 60);
+    public CacheManager cacheManager() {
+        CaffeineCache countryCache = buildCache("countries", 20, TimeUnit.SECONDS);
+
         SimpleCacheManager manager = new SimpleCacheManager();
-        manager.setCaches(Arrays.asList(messageCache));
+        manager.setCaches(Arrays.asList(countryCache));
         return manager;
     }
 
-    private CaffeineCache buildCache(String name,
-//                                     Ticker ticker,
-                                     int secondsToExpire) {
+    private CaffeineCache buildCache(String name, int expireTime, TimeUnit timeUnit) {
         return new CaffeineCache(name, Caffeine.newBuilder()
-                .expireAfterWrite(secondsToExpire, TimeUnit.SECONDS)
+                .expireAfterWrite(expireTime, timeUnit)
                 .maximumSize(100)
-//                .ticker(ticker)
                 .build());
     }
 
-//    @Bean
-//    public Ticker ticker() {
-//        return Ticker.systemTicker();
-//    }
 }
 
