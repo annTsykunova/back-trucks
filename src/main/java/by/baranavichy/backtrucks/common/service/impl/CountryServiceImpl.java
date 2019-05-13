@@ -8,8 +8,12 @@ import by.baranavichy.backtrucks.common.service.EntityServiceImpl;
 import by.baranavichy.backtrucks.persistence.model.Country;
 import by.baranavichy.backtrucks.persistence.repository.CountryRepository;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -30,11 +34,18 @@ public class CountryServiceImpl
         this.countryRepository = countryRepository;
     }
 
-//    @Override
-//    @Cacheable
-//    public Collection<CountryTO> getAll() {
-//        return super.getAll();
-//    }
+    @Override
+    @Cacheable(key = "'all'")
+    public Collection<CountryTO> getAll() {
+        return super.getAll();
+    }
+
+    @Override
+    @Transactional
+    @CacheEvict(key = "'all'")
+    public CountryTO save(CountryTO to) {
+        return super.save(to);
+    }
 
     @Override
     protected Optional<Long> getExistingEntityId(Country entityToSave) {

@@ -1,4 +1,14 @@
 spring:
+  #  cache:
+  #    cache-names: countries
+  #    caffeine:
+  #      spec: maximumSize=500, expireAfterAccess=3s
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lapko
+    username: postgres
+    password: root
+
   jpa:
     #    database: POSTGRESQL
     show-sql: true
@@ -10,9 +20,3 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
-  datasource:
-    #    platform: postgres
-    url: jdbc:postgresql://localhost:5432/lapko
-    username: postgres
-    password: root
-#    driverClassName: org.postgresql.Driver

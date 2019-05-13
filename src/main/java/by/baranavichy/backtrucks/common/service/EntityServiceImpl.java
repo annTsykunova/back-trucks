@@ -16,11 +16,13 @@ import java.util.Optional;
  * Created by Vanya on 27.04.2019.
  */
 @RequiredArgsConstructor
+//@CacheConfig
 public abstract class EntityServiceImpl<E extends AbstractEntity<ID>, T extends AbstractTO<ID>, ID> implements EntityService<T, ID> {
 
     private final EntityTOConverter<E, T> converter;
     private final JpaRepository<E, ID> jpaRepository;
     private final EntityFetcher<E> entityFetcher;
+//    private final String cacheName;
 
     @Override
     public T getOne(ID id) {
@@ -30,6 +32,7 @@ public abstract class EntityServiceImpl<E extends AbstractEntity<ID>, T extends 
     }
 
     @Override
+//    @Cacheable(cacheNames = {cacheName})
     public Collection<T> getAll() {
         Collection<E> entities = jpaRepository.findAll();
         return converter.convertToTos(entities);
@@ -37,6 +40,7 @@ public abstract class EntityServiceImpl<E extends AbstractEntity<ID>, T extends 
 
     @Override
     @Transactional
+//    @CacheEvict(allEntries = true)
     public T save(T to) {
         E entityToFetch = converter.convertToEntity(to);
         E fetchedEntity = entityFetcher.fetch(entityToFetch);
